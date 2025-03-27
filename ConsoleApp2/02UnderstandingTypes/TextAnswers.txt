@@ -1,0 +1,157 @@
+//understanding types
+
+1. What type would you choose for the following “numbers”?
+A person’s telephone number - String
+A person’s height - Int
+A person’s age - Int
+A person’s gender (Male, Female, Prefer Not To Answer) - Enum
+A person’s salary - Decimal
+A book’s ISBN - String
+A book’s price - Decimal
+A book’s shipping weight - Double
+A country’s population - Int
+The number of stars in the universe - BigInteger
+The number of employees in each of the small or medium businesses in the 
+United Kingdom (up to about 50,000 employees per business) - Int
+
+
+2. What are the difference between value type and reference type variables? What is
+boxing and unboxing?
+
+Value type stored in Stack (Int, Float, ..), Stores the value
+Reference type uses Heap to store, uses Pointer/Reference to address/memory location of the actual value (Object, Class, ..) 
+
+Boxing converts value type to object and places the value in heap
+Unboxing converts object to value and storing in stack
+
+3. What is meant by the terms managed resource and unmanaged resource in .NET
+
+Garbage Collector:
+Resources are managed by garbage collector - Ex: String, Int .. 
+Managed resource means resource management by runtime (CLR)
+It doesn't require any cleanup GC does it for this
+
+Unmanaged resource cannot be managed by GC - Ex: Filestream, DB connection, Network, IntPtr
+
+4. What's the purpose of Garbage Collector in .NET?
+
+Manage the memory allocations and de-allocations - Ex: String, StringBuilder..
+
+
+
+
+// Playing with Console App
+
+Console.WriteLine("Hacker Name Generator");
+Console.WriteLine("Enter Favourite Color:");
+string favouriteColor = Console.ReadLine() ?? "Red";;
+Console.WriteLine("Enter your astrology Sign");
+string astrologySign = Console.ReadLine() ?? "Libra";;
+Console.WriteLine("Enter your street address number");
+int streetAddress = int.Parse(Console.ReadLine() ?? "3100");
+string hackerName = favouriteColor+astrologySign+streetAddress;
+Console.WriteLine($"HAcker name: {hackerName}"); 
+
+Test your Knowledge
+1. What happens when you divide an int variable by 0?
+DivideByZeroException Runtime
+
+2. What happens when you divide a double variable by 0?
+No Exception either infinity or -infinity
+
+3. What happens when you overflow an int variable, that is, set it to a value beyond its
+range?
+OverflowException in Debug mode
+after, the result wraps around - the value becomes the lowest possible int value
+
+4. What is the difference between x = y++; and x = ++y;?
+post increment which assigns first then increments vice versa
+
+5. What is the difference between break, continue, and return when used inside a loop
+statement?
+break exits loop completely
+skips current round and executes next
+exits the current method and returns a value
+
+6. What are the three parts of a for statement and which of them are required?
+initialize starting value, condition, inc/dec
+
+7. What is the difference between the = and == operators?
+assignment and equality
+
+8. Does the following statement compile? for ( ; true; ) ;
+yes, infinite loop
+
+9. What does the underscore _ represent in a switch expression?
+used as a default in switch case
+_:
+
+10. What interface must an object implement to be enumerated over by using the foreach
+statement?
+IEnumerable interface to be enumerated over with the foreach loop
+GetEnumerator() must be implemented to return an enumerator (an object implementing IEnumerator) for the collection.
+IEnumerator enables the foreach loop to iterate over the collection.
+
+
+
+
+code execution:
+
+What will happen if this code executes?
+int max = 500;
+for (byte i = 0; i < max; i++)
+{
+WriteLine(i);
+}
+
+will print the numbers from 0 to 255, and then i will overflow and reset back to 0.
+This will happen repeatedly, printing values from 0 to 255 over and over again
+
+add a check inside the loop that will check if the counter exceeds
+we can use int instead of byte
+Also can use checked to detect overflow
+
+try
+{
+    for (byte i = 0; i < max; i++)
+    {
+        checked
+        {
+            Console.WriteLine(i);
+        }
+    }
+}
+catch (OverflowException)
+{
+    Console.WriteLine("Overflow occurred!");
+}
+
+
+
+
+
+//Arrays and Strings:
+
+
+Test your Knowledge
+1. When to use String vs. StringBuilder in C# ?
+String is immutable, leads to performance overhead
+SB is mutable, less manipulation by garbage collector
+
+2. What is the base class for all arrays in C#?
+System.Array
+
+3. How do you sort an array in C#?
+Array.sort(numbers)
+
+4. What property of an array object can be used to get the total number of elements in
+an array?
+.length attribute
+
+5. Can you store multiple data types in System.Array?
+No, You can store with object [] array
+
+
+6. What’s the difference between the System.Array.CopyTo() and System.Array.Clone()?
+a. copies values to destination starting at a specific index
+b. creates new array to store (performs shallow copy)
